@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <stdio.h>
 #include <cstring>
 #include <sstream>
@@ -22,33 +23,15 @@ bool read(double *array, unsigned int size)
 	return true;
 }
 
-
-bool proverka(double *arr, int n)
+void insertionSort(double *arr, int n)
 {
 	int i, j;
 	for (i = 1; i < n; i++)
 	{
 		for (j = (i - 1); j >= 0; j--)
-			if (arr[j + 1] > arr[j])
-			{
-				return false;
-			}
-			else
-			{
-				return true;
-			}
-	}
-}
-
-void insertionSort(double *arr, int n)
-{
-	int i, j;
-	for (i = 1; i < n ; i++)
-	{
-		for (j = (i - 1); j >= 0  ; j--)
 			if (arr[j + 1] < arr[j])
 			{
-				swap(arr[j], arr[j+1]);
+				swap(arr[j], arr[j + 1]);
 			}
 	}
 }
@@ -68,20 +51,11 @@ int main()
 	double *arr = new double[size];
 	if (read(arr, size))
 	{
-		if (proverka(arr, size))
-		{
-			insertionSort(arr, size);
-			cout << "Sorted array: \n";
-			printArray(arr, size);
-		}
-		else
-		{
-			cout << "This line: ";
-			printArray(arr, size); 
-			cout << " is already sorted";
-		}
+		insertionSort(arr, size);
+		cout << "Sorted array: \n";
+		printArray(arr, size);
 	}
-	
+
 	cin.get();
 	return 0;
 }
