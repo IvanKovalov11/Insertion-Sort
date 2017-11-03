@@ -29,10 +29,12 @@ void insertionSort(double *arr, int n)
 	for (i = 1; i < n; i++)
 	{
 		for (j = (i - 1); j >= 0; j--)
+		{
 			if (arr[j + 1] < arr[j])
 			{
 				swap(arr[j], arr[j + 1]);
 			}
+		}
 	}
 }
 
